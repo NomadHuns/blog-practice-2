@@ -4,5 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="shop.mtcoding.blog.model.BoardRepository">
-
+   <select id="findAll" resultType="shop.mtcoding.blog.model.Board">
+      select * from board_tb
+   </select>
+   <select id="findById" resultType="shop.mtcoding.blog.model.Board">
+      select * from board_tb where id = #{id}
+   </select>
+   <insert id="insert">
+      insert into board_tb(title, content, user_id, created_at) values(#{title}, #{content}, #{userId}, now());
+   </insert>
+   <update id="updateById">
+      UPDATE board_tb SET title = #{title}, content = #{content}, user_id = #{userId} where id = ${id}
+   </update>
+   <delete id="deleteById">
+      delete from board_tb where id = #{id}
+   </delete>
 </mapper>
