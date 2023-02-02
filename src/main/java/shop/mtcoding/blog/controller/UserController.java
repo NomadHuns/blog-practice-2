@@ -56,21 +56,21 @@ public class UserController {
     }
 
     @PostMapping("/join")
-    public String join(String username, String password, String email, String passwordCheck){
+    public String join(String username, String password, String email, String passwordCheck) {
         if (username == null || username.equals("")) {
+            System.out.println("디버깅 : 유저네임 오류");
             return "redirect:/joinForm";
         }
         if (password == null || password.equals("")) {
+            System.out.println("디버깅 : 패스워드 오류");
             return "redirect:/joinForm";
         }
         if (email == null || email.equals("")) {
+            System.out.println("디버깅 : 이메일 오류");
             return "redirect:/joinForm";
         }
-        if (password != passwordCheck) {
-            return "redirect:/joinForm";
-        }
-        int result = userService.join(username, passwordCheck, email);
-        if (result != 1){
+        int result = userService.join(username, password, email);
+        if (result != 1) {
             return "redirect:/joinForm";
         }
         User principal = userService.login(username, password);
@@ -79,7 +79,7 @@ public class UserController {
     }
 
     @GetMapping("/user/usernameCheck")
-    public @ResponseBody ResponseDto<?> usernameCheck(String username){
+    public @ResponseBody ResponseDto<?> usernameCheck(String username) {
         int result = userService.checkUsername(username);
         if (result != 1) {
             return new ResponseDto<>(1, "중복된 유저네임이 존재합니다.", false);

@@ -28,7 +28,7 @@ public class UserService {
         return result;
     }
 
-    public int checkUsername(String username){
+    public int checkUsername(String username) {
         User principal = userRepository.findByUsername(username);
         if (principal != null) {
             return -1;

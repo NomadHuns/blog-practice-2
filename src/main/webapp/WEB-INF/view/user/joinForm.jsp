@@ -15,7 +15,7 @@
 
                     <div class="form-group mb-2">
                         <input type="password" class="form-control" placeholder="Enter passwordCheck"
-                            id="passwordCheck">
+                            id="passwordCheck" onchange="checkPassword()">
                     </div>
 
                     <div class="form-group mb-2">
@@ -29,10 +29,11 @@
         </div>
 
         <script>
-            let check = false;
+            let checkAbleUsername = false;
+            let checkSamePassword = false;
 
             function valid() {
-                if (check === true) {
+                if (checkAbleUsername == true) {
                     return true;
                 } else {
                     alert("아이디 중복체크 해주세요.");
@@ -40,8 +41,18 @@
                 }
             }
 
+            function checkPassword() {
+                checkSamePassword = false;
+                if ($("#password").val() == $("#passwordCheck").val()) {
+                    checkSamePassword = true;
+                } else {
+                    alert("패스워드가 동일하지 않습니다");
+                    $("#passwordCheck").val("");
+                }
+            }
+
             function checkUsername() {
-                check = false;
+                checkAbleUsername = false;
                 let username = $("#username").val();
                 $.ajax({
                     type: "get",
@@ -51,7 +62,7 @@
                         console.log(res);
                         alert(res.msg);
                         if (res.data == true) {
-                            check == true;
+                            checkAbleUsername = true;
                         }
                     })
                     .fail((err) => {
