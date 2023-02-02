@@ -18,4 +18,21 @@ public class UserService {
         }
         return principal;
     }
+
+    public int join(String username, String password, String email) {
+        int check = checkUsername(username);
+        if (check != 1) {
+            return -1;
+        }
+        int result = userRepository.insert(username, password, email);
+        return result;
+    }
+
+    public int checkUsername(String username){
+        User principal = userRepository.findByUsername(username);
+        if (principal != null) {
+            return -1;
+        }
+        return 1;
+    }
 }
