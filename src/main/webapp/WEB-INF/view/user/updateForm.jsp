@@ -41,10 +41,11 @@
                     data: JSON.stringify(user),
                 })
                     .done((res) => {
-                        alert("성공");
-                        console.log(res);
+                        alert(res.msg);
                     })
-                    .fail(() => { })
+                    .fail((err) => {
+                        console.log(err);
+                    })
             }
         </script>
         <%@ include file="../layout/footer.jsp" %>

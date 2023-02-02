@@ -109,6 +109,6 @@ public class UserController {
             return new ResponseDto<>(-1, "DB 접근 중 문제가 발생하였습니다", null);
         }
         String data = gson.toJson(userUpdateDto);
-        return new ResponseDto<>(1, "접촉성공", data);
+        return new ResponseDto<>(1, "회원 정보 수정에 성공하였습니다.", data);
     }
 }
