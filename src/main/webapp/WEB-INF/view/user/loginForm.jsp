@@ -4,12 +4,12 @@
         <div class="container">
             <form action="/login" method="post">
                 <div class="form-group mb-2">
-                    <input type="text" name="username" class="form-control" placeholder="Enter username" id="username">
+                    <input type="text" name="username" class="form-control" placeholder="Enter username" id="username" required>
                 </div>
 
                 <div class="form-group mb-2">
                     <input type="password" name="password" class="form-control" placeholder="Enter password"
-                        id="password">
+                        id="password" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">로그인</button>

@@ -3,6 +3,7 @@ package shop.mtcoding.blog.service;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
+import shop.mtcoding.blog.dto.UserUpdateDto;
 import shop.mtcoding.blog.model.User;
 import shop.mtcoding.blog.model.UserRepository;
 
@@ -31,6 +32,15 @@ public class UserService {
     public int checkUsername(String username) {
         User principal = userRepository.findByUsername(username);
         if (principal != null) {
+            return -1;
+        }
+        return 1;
+    }
+
+    public int update(UserUpdateDto userUpdateDto, User principal) {
+        int result = userRepository.updateById(principal.getUsername(), userUpdateDto.getPassword(),
+                userUpdateDto.getEmail(), principal.getId());
+        if (result != 1) {
             return -1;
         }
         return 1;

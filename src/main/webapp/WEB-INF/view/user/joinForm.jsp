@@ -5,21 +5,22 @@
                 <form action="/join" method="post" onsubmit="return valid()">
                     <div class="form-group mb-2 ">
                         <input type="text" name="username" class="form-control" placeholder="Enter username"
-                            id="username" onchange="checkUsername()">
+                            id="username" onchange="checkUsername()" required>
                     </div>
 
                     <div class="form-group mb-2">
                         <input type="password" name="password" class="form-control" placeholder="Enter password"
-                            id="password">
+                            id="password" required>
                     </div>
 
                     <div class="form-group mb-2">
-                        <input type="password" class="form-control" placeholder="Enter passwordCheck"
-                            id="passwordCheck" onchange="checkPassword()">
+                        <input type="password" class="form-control" placeholder="Enter passwordCheck" id="passwordCheck"
+                            onchange="checkPassword()" required>
                     </div>
 
                     <div class="form-group mb-2">
-                        <input type="email" name="email" class="form-control" placeholder="Enter email" id="email">
+                        <input type="email" name="email" class="form-control" placeholder="Enter email" id="email"
+                            required>
                     </div>
 
                     <button type="submit" class="btn btn-primary">회원가입</button>
@@ -33,7 +34,7 @@
             let checkSamePassword = false;
 
             function valid() {
-                if (checkAbleUsername == true) {
+                if (checkAbleUsername == true && checkSamePassword == true) {
                     return true;
                 } else {
                     alert("아이디 중복체크 해주세요.");
